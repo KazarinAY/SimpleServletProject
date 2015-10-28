@@ -3,6 +3,7 @@ package ru.kazarin.javabrains;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,12 +26,15 @@ public class SimpleServlet extends HttpServlet {
 		String userName = request.getParameter("name");
 		PrintWriter writer = response.getWriter();
 		HttpSession session = request.getSession();
+		ServletContext context = request.getServletContext();
 		if (userName != "" && userName != null) {
 			session.setAttribute("savedUserName", userName);
+			context.setAttribute("savedUserName", userName);
 		}
 		
 		writer.println("Request name = " + userName);
 		writer.println("Session name = " + (String) session.getAttribute("savedUserName"));
+		writer.println("Context name = " + (String) context.getAttribute("savedUserName"));
 	}
 
 }
