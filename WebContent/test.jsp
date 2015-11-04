@@ -27,5 +27,19 @@ k = add(22432, 43568);
 <br>
 Value of k is <%= k %>
 
+<%
+for (int m = 0; m < 5; m++) {
+	out.println("<br>m = " + m);
+}
+%>
+<br>
+<%
+for (int n = 0; n < 5; n++) {
+%>
+	<br>n = <%=n%>
+<%
+}
+%>
+
 </body>
 </html>
